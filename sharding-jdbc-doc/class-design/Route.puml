@@ -1,0 +1,25 @@
+@startuml
+
+interface RoutingEngine{
+    RoutingResult route();
+}
+
+class SimpleRoutingEngine{
+}
+
+class ComplexRoutingEngine{
+}
+
+class CartesianRoutingEngine{
+}
+
+class DatabaseHintRoutingEngine{
+}
+
+RoutingEngine <|-- SimpleRoutingEngine
+RoutingEngine <|-- ComplexRoutingEngine
+RoutingEngine <|-- CartesianRoutingEngine
+RoutingEngine <|-- DatabaseHintRoutingEngine
+
+
+@enduml
