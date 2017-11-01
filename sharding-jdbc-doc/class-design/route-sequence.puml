@@ -1,0 +1,13 @@
+@startuml
+ShardingPreparedStatement -->  PreparedStatementRoutingEngine: 1. route(params)
+PreparedStatementRoutingEngine -->  SQLRouter: 1.1 parse(logicSQL,size)
+PreparedStatementRoutingEngine <--  SQLRouter: SQLStatement
+
+PreparedStatementRoutingEngine --> SQLRouter: 1.2 route(logicSQL,params,sqlStatement)
+SQLRouter --> RoutingEngine: 1.2.1 route
+SQLRouter <-- RoutingEngine: RoutingResult
+SQLRouter --> SQLRewriteEngine: 1.2.2 rewrite
+SQLRouter <-- SQLRewriteEngine: SQLBuilder
+PreparedStatementRoutingEngine <-- SQLRouter: SQLRouteResult
+ShardingPreparedStatement -->  PreparedStatementRoutingEngine: Collection<PreparedStatementUnit>
+@enduml

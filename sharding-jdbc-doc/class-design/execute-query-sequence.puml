@@ -1,0 +1,16 @@
+@startuml
+client -->  ShardingDataSource: 1. getConnection
+ShardingDataSource --> ShardingConnnection:getConnection
+ShardingDataSource <-- ShardingConnnection:ShardingConnnection
+client <--  ShardingDataSource: ShardingConnnection
+
+client --> ShardingConnnection: 2. prepareStatement
+client <-- ShardingConnnection: ShardingPreparedStatement
+
+client --> ShardingPreparedStatement: 3. executeQuery(sql)
+ShardingPreparedStatement -->  PreparedStatementRoutingEngine: 3.1 route
+ShardingPreparedStatement --> PreparedStatementExecutor: 3.2 executeQuery
+ShardingPreparedStatement --> ShardingResultSet: 3.3 merge
+client <-- ShardingPreparedStatement: ResultSet
+
+@enduml

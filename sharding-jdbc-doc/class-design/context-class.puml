@@ -1,0 +1,25 @@
+@startuml
+
+class ShardingDataSource
+class ExecutorEngine
+class ShardingContext
+class ShardingRule
+class DatabaseType
+class DataSourceRule
+class TableRules
+
+ShardingDataSource o-- ExecutorEngine
+ShardingDataSource o-- ShardingContext
+
+ShardingContext o-- ShardingRule
+ShardingContext o-- DatabaseType
+ShardingContext o-- ExecutorEngine
+
+ShardingRule o-- DataSourceRule
+ShardingRule o-- TableRules
+ShardingRule o-- BindingTableRules
+ShardingRule o-- DatabaseShardingStrategy
+ShardingRule o-- TableShardingStrategy
+
+
+@enduml

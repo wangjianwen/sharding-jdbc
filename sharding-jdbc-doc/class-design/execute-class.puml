@@ -1,0 +1,21 @@
+@startuml
+
+class ShardingConnection {
+    Connection getConnection(final String dataSourceName, final SQLType sqlType);
+    PreparedStatement prepareStatement(final String sql) throws SQLException;
+    Statement createStatement();
+}
+
+
+class ShardingStatement {
+    ResultSet executeQuery(final String sql) throws SQLException;
+    int executeUpdate(final String sql) throws SQLException;
+}
+
+class ShardingPreparedStatement {
+    ResultSet executeQuery() throws SQLException;
+    int executeUpdate() throws SQLException;
+}
+
+
+@enduml
