@@ -17,6 +17,9 @@
 
 package com.dangdang.ddframe.rdb.sharding.routing.type.simple;
 
+import com.google.common.base.Optional;
+import com.google.common.base.Preconditions;
+
 import com.dangdang.ddframe.rdb.sharding.api.ShardingValue;
 import com.dangdang.ddframe.rdb.sharding.api.rule.DataNode;
 import com.dangdang.ddframe.rdb.sharding.api.rule.ShardingRule;
@@ -31,9 +34,6 @@ import com.dangdang.ddframe.rdb.sharding.parsing.parser.sql.SQLStatement;
 import com.dangdang.ddframe.rdb.sharding.routing.type.RoutingEngine;
 import com.dangdang.ddframe.rdb.sharding.routing.type.RoutingResult;
 import com.dangdang.ddframe.rdb.sharding.routing.type.TableUnit;
-import com.google.common.base.Optional;
-import com.google.common.base.Preconditions;
-import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -41,6 +41,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import lombok.RequiredArgsConstructor;
 
 /**
  * Simple routing engine.
@@ -57,6 +59,8 @@ public final class SimpleRoutingEngine implements RoutingEngine {
     private final String logicTableName;
     
     private final SQLStatement sqlStatement;
+
+   
     
     @Override
     public RoutingResult route() {

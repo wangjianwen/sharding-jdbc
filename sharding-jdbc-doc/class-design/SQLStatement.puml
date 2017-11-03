@@ -1,0 +1,25 @@
+@startuml
+
+class SQLStatement
+
+abstract class AbstractSQLStatement
+
+class DDLStatement
+
+class DMLStatement
+
+class InsertStatement
+
+class DQLStatement
+
+class SelectStatement
+
+SQLStatement <|-- AbstractSQLStatement
+AbstractSQLStatement <|-- DQLStatement
+AbstractSQLStatement <|-- DDLStatement
+AbstractSQLStatement <|-- DMLStatement
+DQLStatement <|-- SelectStatement
+DMLStatement <|-- InsertStatement
+
+
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+
+class Lexer
+
+Lexer <|-- MySQLLexer
+Lexer <|-- PostgreSQLLexer
+Lexer <|-- OracleLexer
+Lexer <|-- SQLServerLexer
+
+
+@enduml

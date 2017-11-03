@@ -1,0 +1,45 @@
+@startuml
+
+interface SQLParser {
+    SQLStatement parse();
+}
+
+abstract class AbstractInsertParser
+abstract class AbstractDeleteParser {
+    # {abstract} Keyword[] getSkippedKeywordsBetweenDeleteAndTable()
+}
+abstract class AbstractCreateParser {
+    # {abstract} Keyword[] getSkippedKeywordsBetweenCreateAndKeyword()
+    # {abstract} Keyword[] getSkippedKeywordsBetweenCreateTableAndTableName()
+}
+abstract class AbstractTruncateParser
+abstract class AbstractSelectParser {
+   # {abstract} void parseInternal(final SelectStatement selectStatement)
+}
+abstract class AbstractDropParser {
+   # {abstract} Keyword[] getSkippedKeywordsBetweenDropTableAndTableName()
+}
+abstract class AbstractAlterParser
+abstract class AbstractUpdateParser
+
+
+SQLParser <|-- AbstractInsertParser
+SQLParser <|-- AbstractDeleteParser
+SQLParser <|-- AbstractCreateParser
+SQLParser <|-- AbstractTruncateParser
+SQLParser <|-- AbstractSelectParser
+SQLParser <|-- AbstractDropParser
+SQLParser <|-- AbstractAlterParser
+SQLParser <|-- AbstractUpdateParser
+
+AbstractInsertParser <|-- PostgreSQLInsertParser
+AbstractInsertParser <|-- OracleInsertParser
+AbstractInsertParser <|-- MySQLInsertParser
+AbstractInsertParser <|-- SQLServerInsertParser
+
+AbstractDeleteParser <|-- PostgreSQLDeleteParser
+AbstractDeleteParser <|-- OracleDeleteParser
+AbstractDeleteParser <|-- MySQLDeleteParser
+AbstractDeleteParser <|-- SQLServerDeleteParser
+
+@enduml
